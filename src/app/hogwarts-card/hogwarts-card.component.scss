@@ -1,0 +1,8 @@
+@import "../../styles.scss";
+
+.hogwarts-card {
+    @include card();
+
+    height: 8em;
+    width: 6em;
+}

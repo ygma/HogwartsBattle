@@ -1,0 +1,8 @@
+@import "../../styles.scss";
+
+.dark-arts-card {
+    @include card();
+
+    height: 9em;
+    width: 9em;
+}

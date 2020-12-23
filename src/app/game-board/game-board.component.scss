@@ -1,0 +1,34 @@
+.game-board {
+    width: 100%;
+    border: 2px solid black;
+    display: flex;
+
+    .left {
+        width: 66%;
+        display: flex;
+        flex-direction: column;
+
+        .location-row {
+            display: flex;
+        }
+
+        .dark-arts-row {
+            display: flex;
+        }
+
+        .villain-row {
+            display: flex;
+        }
+    }
+
+    .right {
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+
+        .row {
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+}

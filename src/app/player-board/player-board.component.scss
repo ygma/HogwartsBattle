@@ -1,0 +1,19 @@
+.player-board {
+    width: 100%;
+    border: 2px solid black;
+    display: flex;
+
+    .left {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+
+        .card-row {
+            display: flex;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GameBox } from '../classes/game-box';
-import { GameBox1 } from '../classes/game-box/game-box-1';
+import { GameBox1 } from '../classes/game-boxes/game-box-1';
 import { GamePlay } from '../classes/game-play';
 
 @Injectable({

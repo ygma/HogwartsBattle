@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DarkArtsCard } from 'src/app/classes/dark-arts-card';
+import { GameBoxEnum } from 'src/app/classes/game-boxes/game-box-enum';
 
 @Component({
   selector: 'app-dark-arts-card',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dark-arts-card.component.scss']
 })
 export class DarkArtsCardComponent implements OnInit {
+  @Input() card: DarkArtsCard;
 
   constructor() { }
 

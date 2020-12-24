@@ -1,1 +1,8 @@
-<p class="big-card">location-card works!</p>
+<div class="big-card" *ngIf="locationStatus">
+  <div>{{locationStatus.currentLocationCard.gameBoxName}}</div>
+  <div>{{locationStatus.currentCardIndex + 1}}-{{locationStatus.locationCards.length}}</div>
+  <div>Each turn reveal {{locationStatus.currentLocationCard.countOfDarkArtsEventRevealedEachTurn}} Dark Arts event.</div>
+  <div>Left villain controls: {{locationStatus.currentLocationCard.maxVillainControls - locationStatus.currentVillainControls}}</div>
+</div>
+<div class="big-card" *ngIf="!locationStatus">
+</div>

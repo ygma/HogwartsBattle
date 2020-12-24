@@ -1,38 +1,20 @@
 <div class="game-board">
     <div class="left">
         <div class="location-row">
-            <app-location-card></app-location-card>
+            <app-location-card [locationStatus]="gamePlay?.locationStatus"></app-location-card>
             <div>
-                <p>Left Dark Arts:</p>
-                <p>Left Villains:</p>
+                <p>Left Dark Arts: {{gamePlay?.leftDarkArtsDeckCount}}</p>
+                <p>Left Villains: {{gamePlay?.leftVillainsCount}}</p>
+                <p>Left Hogwarts Cards: {{gamePlay?.leftHogwartsCardCount}}</p>
             </div>
         </div>
         <div class="dark-arts-row">
-            <app-dark-arts-card></app-dark-arts-card>
-            <app-dark-arts-card></app-dark-arts-card>
-            <app-dark-arts-card></app-dark-arts-card>
+            <app-dark-arts-card *ngFor="let item of gamePlay?.revealedDarkArtsCards" [card]="item"></app-dark-arts-card>
         </div>
         <div class="villain-row">
-            <app-villain-card></app-villain-card>
-            <app-villain-card></app-villain-card>
-            <app-villain-card></app-villain-card>
+            <app-villain-card *ngFor="let item of gamePlay?.villainStatuses" [villainStatus]="item"></app-villain-card>
         </div>
     </div>
     <div class="right">
-        <div class="row">
-            <app-hogwarts-card></app-hogwarts-card>
-        </div>
-        <div class="row">
-            <app-hogwarts-card></app-hogwarts-card>
-            <app-hogwarts-card></app-hogwarts-card>
-        </div>
-        <div class="row">
-            <app-hogwarts-card></app-hogwarts-card>
-            <app-hogwarts-card></app-hogwarts-card>
-        </div>
-        <div class="row">
-            <app-hogwarts-card></app-hogwarts-card>
-            <app-hogwarts-card></app-hogwarts-card>
-        </div>
-    </div>
+        <app-hogwarts-card *ngFor="let item of gamePlay?.revealedHogwartsCards" [hogwartsCard]="item"></app-hogwarts-card>
 </div>

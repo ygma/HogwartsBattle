@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { HeroStatus } from 'src/app/classes/game-play/hero-status';
 
 @Component({
   selector: 'app-player-board',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player-board.component.scss']
 })
 export class PlayerBoardComponent implements OnInit {
+  @Input() heroStatus: HeroStatus;
 
   constructor() { }
 

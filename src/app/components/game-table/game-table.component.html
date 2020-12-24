@@ -1,13 +1,10 @@
 <div class="game-table">
     <div class="left">
-        <app-game-board></app-game-board>
-        <app-menu></app-menu>
+        <app-game-board [gamePlay]="gamePlay"></app-game-board>
+        <app-menu (start)="onStart()"></app-menu>
         <app-output-area></app-output-area>
     </div>
     <div class="right">
-        <app-player-board></app-player-board>
-        <app-player-board></app-player-board>
-        <app-player-board></app-player-board>
-        <app-player-board></app-player-board>
+        <app-player-board *ngFor="let item of gamePlay?.heroStatuses" [heroStatus]="item"></app-player-board>
     </div>
 </div>

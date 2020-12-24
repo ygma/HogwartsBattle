@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GameService } from 'src/app/services/game.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { GameService } from 'src/app/services/game.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  @Output() start = new EventEmitter();
 
   constructor(
     private gameService: GameService
@@ -15,7 +16,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  start(): void {
+  onStart(): void {
     this.gameService.start();
+    this.start.emit();
   }
 }

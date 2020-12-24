@@ -6,6 +6,6 @@ export class HeWhoMustNotBeNamed extends DarkArtsCard {
     super(
       GameBoxEnum.Game1,
       'He-Who-Must-Not-Be-Named',
-    )
+    );
   }
 }

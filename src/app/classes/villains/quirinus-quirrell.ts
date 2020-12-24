@@ -7,6 +7,6 @@ export class QuirinusQuirrell extends VillainCard {
       GameBoxEnum.Game1,
       'Quirinus Quirrell',
       6,
-    )
+    );
   }
 }

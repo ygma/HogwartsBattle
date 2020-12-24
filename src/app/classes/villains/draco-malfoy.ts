@@ -7,6 +7,6 @@ export class DracoMalfoy extends VillainCard {
       GameBoxEnum.Game1,
       'Draco Malfoy',
       6,
-    )
+    );
   }
 }

@@ -8,7 +8,7 @@ import { GamePlay } from '../classes/game-play';
 })
 export class GameService {
 
-  private gamePlay: GamePlay;
+  private _gamePlay: GamePlay;
   private readonly gameBoxes: GameBox[];
 
   constructor() {
@@ -18,6 +18,10 @@ export class GameService {
   }
 
   start(): void {
-    this.gamePlay = new GamePlay(this.gameBoxes[0]);
+    this._gamePlay = new GamePlay(this.gameBoxes[0]);
+  }
+
+  get gamePlay(): GamePlay {
+    return this._gamePlay;
   }
 }

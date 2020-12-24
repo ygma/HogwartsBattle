@@ -6,6 +6,6 @@ export class Petrification extends DarkArtsCard {
     super(
       GameBoxEnum.Game1,
       'Petrification',
-    )
+    );
   }
 }

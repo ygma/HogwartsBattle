@@ -7,6 +7,6 @@ export class CrabbeGoyle extends VillainCard {
       GameBoxEnum.Game1,
       'Crabbe & Goyle',
       5,
-    )
+    );
   }
 }

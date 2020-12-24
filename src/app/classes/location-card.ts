@@ -1,11 +1,12 @@
+import { BaseCard } from './base-card';
 import { GameBoxEnum } from './game-boxes/game-box-enum';
 
-export class LocationCard {
+export class LocationCard extends BaseCard {
   constructor(
-    readonly gameBoxEnum: GameBoxEnum,
+    gameBoxEnum: GameBoxEnum,
     readonly countOfDarkArtsEventRevealedEachTurn: number,
     readonly maxVillainControls: number
   ) {
-
+    super('', gameBoxEnum);
   }
 }

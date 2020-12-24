@@ -6,6 +6,6 @@ export class Expulso extends DarkArtsCard {
     super(
       GameBoxEnum.Game1,
       'Expulso',
-    )
+    );
   }
 }

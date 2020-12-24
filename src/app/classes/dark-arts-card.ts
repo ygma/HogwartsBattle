@@ -1,10 +1,11 @@
+import { BaseCard } from './base-card';
 import { GameBoxEnum } from './game-boxes/game-box-enum';
 
-export class DarkArtsCard {
+export class DarkArtsCard extends BaseCard {
   constructor(
-    readonly gameBoxEnum: GameBoxEnum,
-    readonly name: string,
+    gameBoxEnum: GameBoxEnum,
+    name: string,
   ) {
-
+    super(name, gameBoxEnum);
   }
 }

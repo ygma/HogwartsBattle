@@ -30,11 +30,12 @@ import { QuirinusQuirrell } from '../villains/quirinus-quirrell';
 import { GameBoxEnum } from './game-box-enum';
 
 export class GameBox1 implements GameBox {
-  locationCards: LocationCard[];
-  darkArtsCards: DarkArtsCard[];
-  villainCards: VillainCard[];
-  hogwartsCards: HogwartsCard[];
-  heroCards: HeroCard[];
+  readonly locationCards: LocationCard[];
+  readonly darkArtsCards: DarkArtsCard[];
+  readonly villainCards: VillainCard[];
+  readonly hogwartsCards: HogwartsCard[];
+  readonly heroCards: HeroCard[];
+  readonly activeVillainCount: number = 1;
 
   constructor() {
     this.locationCards = [

@@ -10,4 +10,5 @@ export interface GameBox {
     readonly villainCards: VillainCard[];
     readonly hogwartsCards: HogwartsCard[];
     readonly heroCards: HeroCard[];
+    readonly activeVillainCount: number;
 }

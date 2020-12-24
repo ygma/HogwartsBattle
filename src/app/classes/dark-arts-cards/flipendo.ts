@@ -6,6 +6,6 @@ export class Flipendo extends DarkArtsCard {
     super(
       GameBoxEnum.Game1,
       'Flipendo',
-    )
+    );
   }
 }

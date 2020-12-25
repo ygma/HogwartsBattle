@@ -4,7 +4,7 @@ import { faHeart } from '../fa-util';
 import { RoleStatus } from '../role-status';
 
 export class MinusHealth implements ActionInterface {
-  readonly description: string =`lose(s) ${this.num} ${faHeart}`;
+  readonly description: string = `lose(s) ${this.num} ${faHeart}`;
 
   constructor(
     private num: number,

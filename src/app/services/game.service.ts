@@ -20,7 +20,7 @@ export class GameService {
     this._gamePlay = new GamePlay(this.gameBoxes[0]);
   }
 
-  next() {
+  next(): void {
     this._gamePlay.next();
   }
 

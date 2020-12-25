@@ -1,3 +1,4 @@
+import { AddVillainControl } from '../actions/add-villain-control';
 import { DarkArtsCard } from '../dark-arts-card';
 import { GameBoxEnum } from '../game-boxes/game-box-enum';
 
@@ -6,6 +7,7 @@ export class HeWhoMustNotBeNamed extends DarkArtsCard {
     super(
       GameBoxEnum.Game1,
       'He-Who-Must-Not-Be-Named',
+      [new AddVillainControl(1)],
     );
   }
 }

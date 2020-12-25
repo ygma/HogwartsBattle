@@ -21,7 +21,7 @@ export class GamePlay {
   private _hogwartsCardDeck: HogwartsCard[];
   private _revealedHogwartsCards: HogwartsCard[] = [];
   private _activeHeroIndex = -1;
-  private _logs: string[] =[];
+  private _logs: string[] = [];
 
   constructor(private readonly _gameBox: GameBox) {
     this._locationStatus = new LocationStatus(_gameBox.locationCards);
@@ -44,7 +44,7 @@ export class GamePlay {
     this.activeHero.isActive = true;
   }
 
-  next() {
+  next(): void {
     const revealedDarkArtsCard = this.revealDarkArtsCard();
     const result = revealedDarkArtsCard.do(this);
     this._logs = [...this.logs, result.log];

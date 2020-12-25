@@ -7,7 +7,7 @@ import { GameService } from 'src/app/services/game.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  @Output() start = new EventEmitter();
+  @Output() startClicked = new EventEmitter();
 
   constructor(
     private gameService: GameService
@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
 
   onStart(): void {
     this.gameService.start();
-    this.start.emit();
+    this.startClicked.emit();
   }
 
   onNext(): void {

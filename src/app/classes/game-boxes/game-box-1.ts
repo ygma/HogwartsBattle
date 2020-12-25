@@ -45,14 +45,14 @@ export class GameBox1 implements GameBox {
     this.darkArtsCards = [
       // new Flipendo(),
       // new Flipendo(),
-      // new HeWhoMustNotBeNamed(),
-      // new HeWhoMustNotBeNamed(),
-      // new HeWhoMustNotBeNamed(),
+      new HeWhoMustNotBeNamed(),
+      new HeWhoMustNotBeNamed(),
+      new HeWhoMustNotBeNamed(),
       // new Petrification(),
       // new Petrification(),
-      new Expulso(),
-      new Expulso(),
-      new Expulso(),
+      // new Expulso(),
+      // new Expulso(),
+      // new Expulso(),
     ];
     this.villainCards = [
       new CrabbeGoyle(),

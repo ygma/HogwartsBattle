@@ -1,3 +1,5 @@
+import { ActionResult } from '../action-result';
+import { faSkull } from '../fa-util';
 import { LocationCard } from '../location-card';
 
 export class LocationStatus {
@@ -22,11 +24,16 @@ export class LocationStatus {
     return this._currentVillainControls;
   }
 
-  addVillainControls(count: number): void {
+  addVillainControls(count: number): ActionResult<void> {
+    if (this._currentVillainControls === this.currentLocationCard.maxVillainControls) {
+      return new ActionResult(false, 'Villain Controls has been full.');
+    }
+    const oldCount = this._currentVillainControls;
     this._currentVillainControls = Math.min(
       this._currentVillainControls + count,
       this.currentLocationCard.maxVillainControls,
     );
+    return new ActionResult(true, `${this._currentVillainControls - oldCount} ${faSkull} was added.`);
   }
 
   removeVillainControls(count: number): void {

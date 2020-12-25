@@ -1,7 +1,7 @@
 <div class="game-table">
     <div class="left">
         <app-game-board [gamePlay]="gamePlay"></app-game-board>
-        <app-menu (start)="onStart()"></app-menu>
+        <app-menu (startClicked)="onStart()"></app-menu>
         <app-output-area [gamePlay]="gamePlay"></app-output-area>
     </div>
     <div class="right">

@@ -11,8 +11,8 @@ export class RoleStatus {
   }
 
   minusHealth(num: number): ActionResult<void> {
-    if (this._currentHealth == 0) {
-      return new ActionResult(false, `${this.card.name} didn't lose ${faHeart}.`);
+    if (this._currentHealth === 0) {
+      return new ActionResult(false, `${this.card.name} has been stunned.`);
     }
 
     const oldHealth = this._currentHealth;

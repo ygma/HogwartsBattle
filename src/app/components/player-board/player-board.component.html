@@ -1,4 +1,4 @@
-<div class="player-board">
+<div class="player-board" [ngClass]="{'active': heroStatus.isActive}">
     <div class="left">
         <div>{{heroStatus.heroCard.gameBoxName}}</div>
         <div>Name: {{heroStatus.heroCard.name}}</div>

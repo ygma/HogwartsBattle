@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { GamePlay } from 'src/app/classes/game-play';
 
 @Component({
   selector: 'app-output-area',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./output-area.component.scss']
 })
 export class OutputAreaComponent implements OnInit {
+  @Input() gamePlay: GamePlay;
 
   constructor() { }
 

@@ -17,9 +17,11 @@ export class GamePlay {
   private _currentIndexOfVillainDeck = 0;
   private _heroStatuses: HeroStatus[];
   private _darkArtsDeck: DarkArtsCard[];
-  private _revealedDarkArtsCards: DarkArtsCard[] =[];
+  private _revealedDarkArtsCards: DarkArtsCard[] = [];
   private _hogwartsCardDeck: HogwartsCard[];
-  private _revealedHogwartsCards: HogwartsCard[] =[];
+  private _revealedHogwartsCards: HogwartsCard[] = [];
+  private _activeHeroIndex = -1;
+  private _logs: string[] =[];
 
   constructor(private readonly _gameBox: GameBox) {
     this._locationStatus = new LocationStatus(_gameBox.locationCards);
@@ -28,7 +30,7 @@ export class GamePlay {
     this._darkArtsDeck = _.shuffle(_gameBox.darkArtsCards);
 
     _.times(_gameBox.activeVillainCount, () => {
-      this._villainStatuses = [...this._villainStatuses, new VillainStatus(this._villainDeck.shift())]
+      this._villainStatuses = [...this._villainStatuses, new VillainStatus(this._villainDeck.shift())];
     });
 
     this._heroStatuses = _(_gameBox.heroCards)
@@ -37,6 +39,24 @@ export class GamePlay {
       .value();
 
     this.fillRevealedHogwartsCards();
+
+    this._activeHeroIndex = 0;
+    this.activeHero.isActive = true;
+  }
+
+  next() {
+    const revealedDarkArtsCard = this.revealDarkArtsCard();
+    const result = revealedDarkArtsCard.do(this);
+    this._logs = [...this.logs, result.log];
+  }
+
+  revealDarkArtsCard(): DarkArtsCard {
+    if (_.isEmpty(this._darkArtsDeck)) {
+      this._darkArtsDeck = _.shuffle(this._gameBox.darkArtsCards);
+    }
+    const revealedDarkArtsCard = this._darkArtsDeck.shift();
+    this._revealedDarkArtsCards = [...this._revealedDarkArtsCards, revealedDarkArtsCard];
+    return revealedDarkArtsCard;
   }
 
   fillRevealedHogwartsCards(): void {
@@ -45,7 +65,13 @@ export class GamePlay {
         return;
       }
       this._revealedHogwartsCards = [...this._revealedHogwartsCards, this._hogwartsCardDeck.shift()];
-    })
+    });
+  }
+
+  nextHero(): void {
+    this.activeHero.isActive = false;
+    this._activeHeroIndex = (this._activeHeroIndex + 1) % this._heroStatuses.length;
+    this.activeHero.isActive = true;
   }
 
   get locationStatus(): LocationStatus {
@@ -78,5 +104,13 @@ export class GamePlay {
 
   get leftHogwartsCardCount(): number {
     return this._hogwartsCardDeck.length;
+  }
+
+  get activeHero(): HeroStatus {
+    return this._heroStatuses[this._activeHeroIndex];
+  }
+
+  get logs(): string[] {
+    return this._logs;
   }
 }

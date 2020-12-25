@@ -1,18 +1,20 @@
 import * as _ from 'lodash';
 import { HeroCard } from '../hero-card';
 import { HogwartsCard } from '../hogwarts-card';
+import { RoleStatus } from '../role-status';
 
-export class HeroStatus {
-  private _currentHealth = 10;
+export class HeroStatus extends RoleStatus {
   private _currentAttackCount = 0;
   private _currentInfluenceCount = 0;
   private _drawDeck: HogwartsCard[] = [];
   private _discardPile: HogwartsCard[] = [];
   private _cardsInHand: HogwartsCard[] = [];
+  public isActive = false;
 
   constructor(
     readonly heroCard: HeroCard,
   ) {
+    super(10, heroCard);
     this._drawDeck = _.shuffle(this.heroCard.initHogwartsCards);
     _.times(5, () => this.draw());
   }
@@ -24,10 +26,6 @@ export class HeroStatus {
       this._discardPile = [];
     }
     this._cardsInHand = [...this._cardsInHand, this._drawDeck.shift()];
-  }
-
-  get currentHealth(): number {
-    return this._currentHealth;
   }
 
   get currentAttackCount(): number {

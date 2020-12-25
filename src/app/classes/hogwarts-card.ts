@@ -1,3 +1,4 @@
+import { Ability } from './ability';
 import { BaseCard } from './base-card';
 import { GameBoxEnum } from './game-boxes/game-box-enum';
 import { HogwartsCardType } from './hogwarts-cards/hogwarts-card-type';
@@ -8,6 +9,7 @@ export class HogwartsCard extends BaseCard {
     readonly influenceValue: number,
     gameBoxEnum: GameBoxEnum,
     name: string,
+    readonly abilities: Ability[] = [],
   ) {
     super(name, gameBoxEnum);
   }

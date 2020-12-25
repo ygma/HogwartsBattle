@@ -7,7 +7,7 @@ import { HogwartsCard } from 'src/app/classes/hogwarts-card';
   styleUrls: ['./hogwarts-card.component.scss']
 })
 export class HogwartsCardComponent implements OnInit {
-  @Input() hogwartsCard: HogwartsCard
+  @Input() hogwartsCard: HogwartsCard;
 
   constructor() { }
 

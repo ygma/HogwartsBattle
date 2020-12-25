@@ -7,7 +7,6 @@ import { GamePlay } from '../classes/game-play';
   providedIn: 'root'
 })
 export class GameService {
-
   private _gamePlay: GamePlay;
   private readonly gameBoxes: GameBox[];
 
@@ -19,6 +18,10 @@ export class GameService {
 
   start(): void {
     this._gamePlay = new GamePlay(this.gameBoxes[0]);
+  }
+
+  next() {
+    this._gamePlay.next();
   }
 
   get gamePlay(): GamePlay {

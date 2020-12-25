@@ -20,4 +20,8 @@ export class MenuComponent implements OnInit {
     this.gameService.start();
     this.start.emit();
   }
+
+  onNext(): void {
+    this.gameService.next();
+  }
 }

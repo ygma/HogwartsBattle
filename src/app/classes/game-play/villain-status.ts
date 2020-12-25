@@ -1,16 +1,12 @@
+import { RoleStatus } from '../role-status';
 import { VillainCard } from '../villain-card';
 
-export class VillainStatus {
-  private _currentHealth: number;
+export class VillainStatus extends RoleStatus {
 
   constructor(
     private _villainCard: VillainCard,
   ) {
-    this._currentHealth = _villainCard.maxHealths;
-  }
-
-  get currentHealth(): number {
-    return this._currentHealth;
+    super(_villainCard.maxHealths, _villainCard);
   }
 
   get villainCard(): VillainCard {

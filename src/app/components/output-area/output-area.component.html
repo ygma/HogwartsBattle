@@ -1,1 +1,3 @@
-<p class="output-area">output-area works!</p>
+<div class="output-area">
+  <div *ngFor="let item of gamePlay?.logs" [innerHTML]="item"></div>
+</div>

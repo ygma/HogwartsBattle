@@ -14,10 +14,6 @@ export class DarkArtsCard extends BaseCard {
     super(name, gameBoxEnum);
   }
 
-  do(gamePlay: GamePlay): ActionResult<void> {
-    return this.abilities[0].do(gamePlay);
-  }
-
   get descriptions(): string[] {
     return _.map(this.abilities, ability => ability.description);
   }

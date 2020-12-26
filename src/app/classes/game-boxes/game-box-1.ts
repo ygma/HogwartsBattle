@@ -55,9 +55,9 @@ export class GameBox1 implements GameBox {
       // new Expulso(),
     ];
     this.villainCards = [
-      new CrabbeGoyle(),
+      // new CrabbeGoyle(),
       new DracoMalfoy(),
-      new QuirinusQuirrell(),
+      // new QuirinusQuirrell(),
     ];
     this.hogwartsCards = [
       new RubeusHagrid(),

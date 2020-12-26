@@ -1,9 +1,8 @@
-import { ActionInterface } from '../action';
 import { ActionResult } from '../action-result';
 import { GamePlay } from '../game-play';
 import { HeroStatus } from '../game-play/hero-status';
 
-export class ActiveHero implements ActionInterface {
+export class ActiveHero {
   readonly description = 'Active Hero';
 
   do(gamePlay: GamePlay): ActionResult<HeroStatus> {

@@ -1,9 +1,8 @@
-import { ActionInterface } from '../action';
 import { ActionResult } from '../action-result';
 import { faHeart } from '../fa-util';
 import { RoleStatus } from '../role-status';
 
-export class MinusHealth implements ActionInterface {
+export class MinusHealth {
   readonly description: string = `lose(s) ${this.num} ${faHeart}`;
 
   constructor(

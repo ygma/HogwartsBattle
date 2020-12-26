@@ -2,9 +2,9 @@
     <div class="left">
         <div>{{heroStatus.heroCard.gameBoxName}}</div>
         <div>Name: {{heroStatus.heroCard.name}}</div>
-        <div>Health: {{heroStatus.currentHealth}}</div>
-        <div>Attack: {{heroStatus.currentAttackCount}}</div>
-        <div>Influence: {{heroStatus.currentInfluenceCount}}</div>
+        <div>{{heroStatus.currentHealth}} <i class="fas fa-heart"></i></div>
+        <div>{{heroStatus.currentAttackCount}} <i class="fas fa-bolt"></i></div>
+        <div>{{heroStatus.currentInfluenceCount}} <i class="fas fa-certificate"></i></div>
         <div>Draw: {{heroStatus.drawDeckCount}}</div>
         <div>Discard: {{heroStatus.discardPile.length}}</div>
     </div>

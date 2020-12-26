@@ -1,20 +1,19 @@
 import { DarkArtsCard } from './dark-arts-card';
 import { GameBox } from './game-box';
-import { HeroCard } from './hero-card';
 import { HogwartsCard } from './hogwarts-card';
-import { LocationCard } from './location-card';
 import { VillainCard } from './villain-card';
 import * as _ from 'lodash';
 import { LocationStatus } from './game-play/location-status';
 import { VillainStatus } from './game-play/villain-status';
 import { HeroStatus } from './game-play/hero-status';
-import { ThrowStmt } from '@angular/compiler';
+import { Effect } from './effect';
+import { Ability } from './ability';
+import { ActionResult } from './action-result';
 
 export class GamePlay {
   private _locationStatus: LocationStatus;
   private _villainStatuses: VillainStatus[] = [];
   private _villainDeck: VillainCard[];
-  private _currentIndexOfVillainDeck = 0;
   private _heroStatuses: HeroStatus[];
   private _darkArtsDeck: DarkArtsCard[];
   private _revealedDarkArtsCards: DarkArtsCard[] = [];
@@ -46,8 +45,14 @@ export class GamePlay {
 
   next(): void {
     const revealedDarkArtsCard = this.revealDarkArtsCard();
-    const result = revealedDarkArtsCard.do(this);
-    this._logs = [...this.logs, result.log];
+    revealedDarkArtsCard.abilities.forEach(ability => {
+      this._doEffect(this._getPreEffect(this._globalEffects), effect => effect.actionsAfterMe, ability);
+      const result = this._doWithLog(ability);
+      if (!result.isSuccess) {
+        return;
+      }
+      this._doEffect(this._getPostEffects(this._globalEffects), effect => effect.actionsBeforeMe, ability);
+    });
   }
 
   revealDarkArtsCard(): DarkArtsCard {
@@ -112,5 +117,44 @@ export class GamePlay {
 
   get logs(): string[] {
     return this._logs;
+  }
+
+  private get _globalEffects(): Effect[] {
+    const cards = [
+      ...this._revealedDarkArtsCards,
+      ...this._villainStatuses.map(status => status.villainCard),
+      ...this._heroStatuses.map(status => status.heroCard)
+    ];
+    return _(cards)
+      .flatMap(card => card.abilities)
+      .filter(ability => ability instanceof Effect)
+      .map(ability => ability as Effect)
+      .value();
+  }
+
+  private _getPreEffect(effects: Effect[]): Effect[] {
+    return _.filter(effects, effect => !_.isEmpty(effect.actionsAfterMe));
+  }
+
+  private _getPostEffects(effects: Effect[]): Effect[] {
+    return _.filter(effects, effect => !_.isEmpty(effect.actionsBeforeMe));
+  }
+
+  private _doEffect(
+    effects: Effect[],
+    getWatchedActions: ((effect: Effect) => any[]),
+    ability: Ability
+  ): void {
+    const applicablePreEffects = _.filter(effects, effect => {
+      const newLocal = getWatchedActions(effect);
+      return _.some(newLocal, clazz => ability instanceof clazz);
+    });
+    applicablePreEffects.forEach(effect => this._doWithLog(effect));
+  }
+
+  private _doWithLog(doable: {do: ((gamePlay: GamePlay) => ActionResult<void>)}): ActionResult<void> {
+    const result = doable.do.apply(doable, [this]);
+    this._logs = [...this.logs, result.log];
+    return result;
   }
 }

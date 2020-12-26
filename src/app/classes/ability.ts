@@ -1,7 +1,12 @@
 import { ActionResult } from './action-result';
 import { GamePlay } from './game-play';
 
-export interface Ability {
-  readonly description: string;
-  do(gamePlay: GamePlay): ActionResult<void>;
+export class Ability {
+  get description(): string {
+    return null;
+  }
+
+  do(gamePlay: GamePlay): ActionResult<void> {
+    throw new Error('please implement');
+  }
 }
